@@ -16,16 +16,27 @@ Author.init({
 }, { sequelize});
 // Book.hasOne(Author)
 Author.hasMany(Book)
+// Book.belongsTo(Author)
 sequelize.sync()
-.then(() => {
-	Author.create({id:1,name: 'reco',})
-	Author.create({id:2,name: 'rita',})  	
-	Book.create({id:1,title: 'the http book',AuthorId:1})
-	return Book.create({id:2,title: 'the little prince',AuthorId:1})  	
+.then(async () => {
+	await Author.create({id:1,name: 'reco',})
+	var rita = await Author.create({id:2,name: 'rita',})  	
+	// var rita = await Author.create({id:2,name: 'rita',books:[{id:5,title: 'b5'},{id:6,title: 'b6'}]})  	
+	await Book.create({id:1,title: 'the http book',AuthorId:1})
+	var cat = await Book.create({id:3,title: 'my brother cat'})
+	rita.addBook(cat)
+	return await Book.create({id:2,title: 'the little prince',AuthorId:1})  	
 })
 .then(jane => {
 	console.log(jane.toJSON());
-	Author.findAll().then((authors)=>{
+	var options = { include: [{
+	    model: Book,
+	    // through: {
+	    //   attributes: ['createdAt', 'startedAt', 'finishedAt'],
+	    //   where: {completed: true}
+	    // }
+	  }]}
+	Author.findAll(options).then((authors)=>{
 		 
 		console.log(JSON.stringify(authors, null, 2));
 	})
