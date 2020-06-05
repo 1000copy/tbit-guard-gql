@@ -1,3 +1,11 @@
+var books = [
+  {id:0,title:"null book",author:{name:"reco"}},
+  {id:1,title:"the little prince",author:{name:"reco"}},
+  {id:2,title:"the http book",author:{name:"reco"}}]
+var authors = [
+  {id:1,name:"reco",books:[{title:"the little prince"},{title:"the http book"}]}, 
+  {id:2,name:"rita",books:[{title:"the swift book"}]}]
+
 // npm i apollo-server -S
 // node index.js
 // curl -i -H 'Content-Type: application/json' -X POST -d '{"query":"{books{title}}"}' http://localhost:4000/graphql
@@ -16,14 +24,6 @@ type Query {
   single(id:String):Book
   authors:[Author]
 }`
-var books = [
-	{id:0,title:"null book",author:{name:"reco"}},
-	{id:1,title:"the little prince",author:{name:"reco"}},
-	{id:2,title:"the http book",author:{name:"reco"}}]
-var authors = [
-	{id:1,name:"reco",books:[{title:"the little prince"},{title:"the http book"}]},	
-	{id:2,name:"rita",books:[{title:"the swift book"}]}]
-
 resolvers = {
     Query:{
         // {books{title}}
@@ -42,9 +42,7 @@ resolvers = {
           }
           return books[0]
         }, 
-    },
-    // Mutation : {
-    // }
+    },    
 }
 const server = new ApolloServer({ typeDefs,resolvers });
 server.listen().then(({ url }) => {
