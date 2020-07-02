@@ -8,7 +8,7 @@ var authors = [
 
 // npm i apollo-server -S
 // node index.js
-// curl -i -H 'Content-Type: application/json' -X POST -d '{"query":"{books{title}}"}' http://localhost:4000/graphql
+// curl -i -H 'Content-Type: application/json' -X POST -d '{"query":"{books{title}}"}' http://localhost:4001/graphql
 
 const { ApolloServer } = require('apollo-server');
 const typeDefs = `type Book {
@@ -45,6 +45,6 @@ resolvers = {
     },    
 }
 const server = new ApolloServer({ typeDefs,resolvers });
-server.listen().then(({ url }) => {
+server.listen({port:4000}).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
