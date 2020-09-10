@@ -251,6 +251,7 @@ $ 纱线开始
 
 这时应该在localhost:3000端口上启动开发服务器，并进行实时更新。
 
+可以使用altair添加文件测试服务是否有效。方法 - https://stackoverflow.com/questions/53445012/graphiql-upload-file
 
 ![贴图](https://miro.medium.com/max/2380/1*aRWnUy4JfG313_aYIzAlbw.png)
 
