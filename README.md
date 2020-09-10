@@ -333,3 +333,5 @@ React应用实例的UI
 ![贴图](https://miro.medium.com/max/1544/1*4YWts8d8VpC1QtZ4Bae6QQ.png)
 
 Aaand voila，"no-image.png "文件成功上传并保存到文件系统。
+
+ref :  https://medium.com/@enespalaz/file-upload-with-graphql-9a4927775ef7
